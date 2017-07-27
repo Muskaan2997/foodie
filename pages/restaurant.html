@@ -30,9 +30,24 @@
         <div>Rs.{{restaurant.cost | number}}</div>
         <div>{{restaurant.hours}}</div>
         <div class="bestDish" ng-if="restaurant.bestDish">
-	        <span>{{restaurant.bestDish.name}} </span>
-	        <div ng-click="getIngredients(restaurant.bestDish.image)" class="button">Get Ingredients</div>
-		</div>
+            <span>{{restaurant.bestDish.name}} </span>
+           <div ng-click="flag=!flag" class="button">Show Image</div>
+          <div ng-show="flag">
+              <ul class="list-buttons">
+                <li style="padding : 10px 0; display:inline-block;"><div ng-click="getIngredients(restaurant.bestDish.image)" class="button">Get Ingredients</div></li>
+                <li style="padding : 10px 0; display:inline-block;"><div ng-click="toDoList();flag1=!flag1" class="button">To-Do List</div></li>
+              </ul>
+           <img ng-src="{{restaurant.bestDish.image}}" style="margin-top: 30px;width:300px; height:200px;">
+              <div ng-show="flag1" class="to-do-list">
+              <!-- 7299 -->
+                <!-- <h2>My Todo List</h2> -->
+                <div ng-repeat="x in todoList">
+                    <input type="checkbox" ng-model="x.done" ng-click="is_done=!is_done"> <span ng-bind="x.todoText" ng-class="{'completed': is_done === true}"></span>
+                </div>
+                <p><button ng-click="remove()">Remove marked</button></p>
+              </div>
+            </div>
+        </div>
     </div>
 </div>
     <div class="rating">
