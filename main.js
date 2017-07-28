@@ -12,7 +12,7 @@
 			templateUrl: 'pages/login.html',
 			controller: 'loginController'
 		})
-		.when('/home',{
+		.when('/home',{                               //rounting k liye so tht ki jo url likha hai wo page khul jae
 			templateUrl: 'pages/home.html',
 			controller: 'mainController'
 		})
@@ -24,14 +24,14 @@
 
 	foodieApp.controller('loginController',function($scope,$location) {
 	$scope.goToHome= function(){
-		// console.log('Do Something')
+		// console.log('Do Something')        //controller login ka
 		$location.url('home')
 	}
 	})
-	foodieApp.controller('restaurantController',function($scope,$routeParams,$http) {
+	foodieApp.controller('restaurantController',function($scope,$routeParams,$http) { // controller restraunt ka
 		//Empty
 		//console.log($routeParams.id);
-		$scope.restaurantId = $routeParams.id;
+		$scope.restaurantId = $routeParams.id;     // restraunt ki list k liye array
 		var restaurants = [{
 		name: 'Farzi Cafe',
 		address: '38/39, Level 1, Block E , Inner Circle, Connaught Place',
@@ -54,7 +54,7 @@
 		cost: '500',
 		hours: '12 Noon to 12 AM (Mon-Sun)',
 		id :2,
-		bestDish: {
+		bestDish: {      //object of object bh ho skta hai
 		name: 'Corn Pizza',
 		image: 'http://noblepig.com/images/2016/06/Avocado-and-Three-Bean-Salad-is-perfect-for-a-summertime-barbecue-side-dish.JPG'
 						 },
@@ -108,7 +108,7 @@
 		var data = '{"inputs":[{"data":{"image":{"url":"' + url + '"}}}]}'
 		    $http({
 		        'method': 'POST',
-		        'url': 'https://api.clarifai.com/v2/models/bd367be194cf45149e75f01d59f77ba7/outputs',
+		        'url': 'https://api.clarifai.com/v2/models/bd367be194cf45149e75f01d59f77ba7/outputs', // claafai ko bheji gyi reqst
 		        'headers': {
 		            'Authorization': 'Key dac3adfc29b14c77a008b3d7addc6166',
 		            'Content-Type': 'application/json'
@@ -138,10 +138,10 @@
 	        })
 		}
 
-		//todo
+		//todo list
 
 		$scope.ingredients = [];
-		$scope.probabilityvalue=[];
+
 
 		$scope.toDoList = function(){
 
@@ -241,4 +241,4 @@
 ]
 
 });
-	//todo
+	
